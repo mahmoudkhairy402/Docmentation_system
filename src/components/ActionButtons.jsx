@@ -2,7 +2,7 @@
 import React from 'react';
 import { FaPlus, FaEdit, FaTrash, FaDownload } from 'react-icons/fa';
 
-const ActionButtons: React.FC = () => {
+const ActionButtons = () => {
   return (
     <div className="d-flex justify-content-between align-items-center mb-4 fade-in" dir="rtl">
       <h4 className="mb-0">

@@ -1,20 +1,19 @@
 
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store';
-import { selectOperation, Operation } from '../store/operationsSlice';
+import { selectOperation } from '../store/operationsSlice';
 import { FaPlane, FaMapMarkerAlt, FaFlag } from 'react-icons/fa';
 
-const OperationsTable: React.FC = () => {
-  const { operations, selectedOperation } = useSelector((state: RootState) => state.operations);
+const OperationsTable = () => {
+  const { operations, selectedOperation } = useSelector((state) => state.operations);
   const dispatch = useDispatch();
 
-  const handleRowClick = (operation: Operation) => {
+  const handleRowClick = (operation) => {
     dispatch(selectOperation(operation));
   };
 
-  const getStatusBadge = (status: string) => {
-    const statusColors: { [key: string]: string } = {
+  const getStatusBadge = (status) => {
+    const statusColors = {
       'مكتملة': 'success',
       'قيد التنفيذ': 'warning',
       'مجدولة': 'info',

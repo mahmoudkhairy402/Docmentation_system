@@ -2,7 +2,7 @@
 import React from 'react';
 import { FaDatabase, FaEdit, FaChartBar, FaCog } from 'react-icons/fa';
 
-const CustomNavbar: React.FC = () => {
+const CustomNavbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-custom" dir="rtl">
       <div className="container">

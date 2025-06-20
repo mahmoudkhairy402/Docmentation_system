@@ -1,12 +1,11 @@
 
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../store';
 import { toggleTheme } from '../store/themeSlice';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
-const ThemeToggle: React.FC = () => {
-  const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode);
+const ThemeToggle = () => {
+  const isDarkMode = useSelector((state) => state.theme.isDarkMode);
   const dispatch = useDispatch();
 
   React.useEffect(() => {

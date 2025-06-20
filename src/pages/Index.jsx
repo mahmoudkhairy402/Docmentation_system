@@ -2,11 +2,11 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../store';
-import CustomNavbar from '../components/Navbar';
-import ThemeToggle from '../components/ThemeToggle';
-import ActionButtons from '../components/ActionButtons';
-import OperationsTable from '../components/OperationsTable';
-import SubTables from '../components/SubTables';
+import CustomNavbar from '../components/Navbar.jsx';
+import ThemeToggle from '../components/ThemeToggle.jsx';
+import ActionButtons from '../components/ActionButtons.jsx';
+import OperationsTable from '../components/OperationsTable.jsx';
+import SubTables from '../components/SubTables.jsx';
 
 const Index = () => {
   return (

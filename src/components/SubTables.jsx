@@ -1,12 +1,11 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../store';
 import { FaUsers, FaBomb, FaPaperclip, FaSpinner } from 'react-icons/fa';
 
-const SubTables: React.FC = () => {
+const SubTables = () => {
   const { selectedOperation, team, ammunition, attachments, loading } = useSelector(
-    (state: RootState) => state.operations
+    (state) => state.operations
   );
 
   if (!selectedOperation) {
@@ -66,9 +65,9 @@ const SubTables: React.FC = () => {
                   </tbody>
                 </table>
               ) : (
-                <div className="text-center p-4 text-muted">
+                <div className="p-3 text-center text-muted">
                   <FaUsers size={24} className="mb-2" />
-                  <p>لا توجد بيانات طاقم</p>
+                  <p>لا يوجد أعضاء في الطاقم</p>
                 </div>
               )}
             </div>
@@ -80,7 +79,7 @@ const SubTables: React.FC = () => {
           <div className="card card-custom h-100">
             <div className="card-header bg-warning text-dark">
               <FaBomb className="me-2" />
-              الذخيرة ({operationAmmunition.length})
+              الذخيرة المستخدمة ({operationAmmunition.length})
             </div>
             <div className="card-body p-0">
               {operationAmmunition.length > 0 ? (
@@ -90,7 +89,6 @@ const SubTables: React.FC = () => {
                       <th>النوع</th>
                       <th>الكمية</th>
                       <th>الوحدة</th>
-                      <th>المصدر</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -98,18 +96,17 @@ const SubTables: React.FC = () => {
                       <tr key={ammo.id}>
                         <td className="fw-bold">{ammo.النوع}</td>
                         <td>
-                          <span className="badge bg-info">{ammo.الكمية}</span>
+                          <span className="badge bg-warning text-dark">{ammo.الكمية}</span>
                         </td>
                         <td>{ammo.الوحدة}</td>
-                        <td>{ammo.المصدر}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               ) : (
-                <div className="text-center p-4 text-muted">
+                <div className="p-3 text-center text-muted">
                   <FaBomb size={24} className="mb-2" />
-                  <p>لا توجد بيانات ذخيرة</p>
+                  <p>لا توجد ذخيرة مسجلة</p>
                 </div>
               )}
             </div>
@@ -119,7 +116,7 @@ const SubTables: React.FC = () => {
         {/* Attachments Table */}
         <div className="col-lg-4">
           <div className="card card-custom h-100">
-            <div className="card-header bg-success text-white">
+            <div className="card-header bg-info text-white">
               <FaPaperclip className="me-2" />
               المرفقات ({operationAttachments.length})
             </div>
@@ -128,27 +125,25 @@ const SubTables: React.FC = () => {
                 <table className="table table-hover mb-0">
                   <thead className="table-light">
                     <tr>
-                      <th>الاسم</th>
+                      <th>اسم الملف</th>
                       <th>النوع</th>
                       <th>الحجم</th>
-                      <th>التاريخ</th>
                     </tr>
                   </thead>
                   <tbody>
                     {operationAttachments.map((attachment) => (
                       <tr key={attachment.id}>
-                        <td className="fw-bold">{attachment.الاسم}</td>
+                        <td className="fw-bold">{attachment.اسم_الملف}</td>
                         <td>
-                          <span className="badge bg-dark">{attachment.النوع}</span>
+                          <span className="badge bg-info">{attachment.النوع}</span>
                         </td>
                         <td>{attachment.الحجم}</td>
-                        <td>{attachment.التاريخ}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               ) : (
-                <div className="text-center p-4 text-muted">
+                <div className="p-3 text-center text-muted">
                   <FaPaperclip size={24} className="mb-2" />
                   <p>لا توجد مرفقات</p>
                 </div>
