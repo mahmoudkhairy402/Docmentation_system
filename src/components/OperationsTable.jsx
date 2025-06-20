@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectOperation } from '../store/operationsSlice';
+import { selectOperation } from '../store/operationsSlice.js';
 import { FaPlane, FaMapMarkerAlt, FaFlag } from 'react-icons/fa';
 
 const OperationsTable = () => {

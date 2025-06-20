@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { FaUsers, FaBomb, FaPaperclip, FaSpinner } from 'react-icons/fa';
+import { FaUsers, FaBomb, FaPaperclip } from 'react-icons/fa';
 
 const SubTables = () => {
   const { selectedOperation, team, ammunition, attachments, loading } = useSelector(
@@ -33,7 +33,6 @@ const SubTables = () => {
   return (
     <div className="fade-in" dir="rtl">
       <div className="row g-4">
-        {/* Team Table */}
         <div className="col-lg-4">
           <div className="card card-custom h-100">
             <div className="card-header bg-primary text-white">
@@ -74,7 +73,6 @@ const SubTables = () => {
           </div>
         </div>
 
-        {/* Ammunition Table */}
         <div className="col-lg-4">
           <div className="card card-custom h-100">
             <div className="card-header bg-warning text-dark">
@@ -113,7 +111,6 @@ const SubTables = () => {
           </div>
         </div>
 
-        {/* Attachments Table */}
         <div className="col-lg-4">
           <div className="card card-custom h-100">
             <div className="card-header bg-info text-white">
@@ -133,7 +130,7 @@ const SubTables = () => {
                   <tbody>
                     {operationAttachments.map((attachment) => (
                       <tr key={attachment.id}>
-                        <td className="fw-bold">{attachment.اسم_الملف}</td>
+                        <td className="fw-bold">{attachment.الاسم}</td>
                         <td>
                           <span className="badge bg-info">{attachment.النوع}</span>
                         </td>
