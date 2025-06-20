@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Container, Row, Col } from 'react-bootstrap';
 import { store } from '../store';
 import CustomNavbar from '../components/Navbar';
 import ThemeToggle from '../components/ThemeToggle';
@@ -16,9 +15,9 @@ const Index = () => {
         <CustomNavbar />
         <ThemeToggle />
         
-        <Container fluid className="py-4">
-          <Row>
-            <Col>
+        <div className="container-fluid py-4">
+          <div className="row">
+            <div className="col">
               <ActionButtons />
               
               {/* Main Operations Table */}
@@ -28,9 +27,9 @@ const Index = () => {
               
               {/* Sub Tables */}
               <SubTables />
-            </Col>
-          </Row>
-        </Container>
+            </div>
+          </div>
+        </div>
       </div>
     </Provider>
   );

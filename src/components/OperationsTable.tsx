@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Table } from 'react-bootstrap';
 import { RootState } from '../store';
 import { selectOperation, Operation } from '../store/operationsSlice';
 import { FaPlane, FaMapMarkerAlt, FaFlag } from 'react-icons/fa';
@@ -26,7 +25,7 @@ const OperationsTable: React.FC = () => {
 
   return (
     <div className="table-custom fade-in" dir="rtl">
-      <Table hover responsive className="mb-0">
+      <table className="table table-hover table-responsive mb-0">
         <thead>
           <tr>
             <th><FaFlag className="me-2" />نوع العملية</th>
@@ -79,7 +78,7 @@ const OperationsTable: React.FC = () => {
             </tr>
           ))}
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Row, Col, Card, Table, Badge } from 'react-bootstrap';
 import { RootState } from '../store';
 import { FaUsers, FaBomb, FaPaperclip, FaSpinner } from 'react-icons/fa';
 
@@ -34,17 +33,17 @@ const SubTables: React.FC = () => {
 
   return (
     <div className="fade-in" dir="rtl">
-      <Row className="g-4">
+      <div className="row g-4">
         {/* Team Table */}
-        <Col lg={4}>
-          <Card className="card-custom h-100">
-            <Card.Header className="bg-primary text-white">
+        <div className="col-lg-4">
+          <div className="card card-custom h-100">
+            <div className="card-header bg-primary text-white">
               <FaUsers className="me-2" />
               طاقم العملية ({operationTeam.length})
-            </Card.Header>
-            <Card.Body className="p-0">
+            </div>
+            <div className="card-body p-0">
               {operationTeam.length > 0 ? (
-                <Table hover className="mb-0">
+                <table className="table table-hover mb-0">
                   <thead className="table-light">
                     <tr>
                       <th>الاسم</th>
@@ -58,34 +57,34 @@ const SubTables: React.FC = () => {
                       <tr key={member.id}>
                         <td className="fw-bold">{member.الاسم}</td>
                         <td>
-                          <Badge bg="secondary">{member.الرتبة}</Badge>
+                          <span className="badge bg-secondary">{member.الرتبة}</span>
                         </td>
                         <td>{member.التخصص}</td>
                         <td>{member.الدور}</td>
                       </tr>
                     ))}
                   </tbody>
-                </Table>
+                </table>
               ) : (
                 <div className="text-center p-4 text-muted">
                   <FaUsers size={24} className="mb-2" />
                   <p>لا توجد بيانات طاقم</p>
                 </div>
               )}
-            </Card.Body>
-          </Card>
-        </Col>
+            </div>
+          </div>
+        </div>
 
         {/* Ammunition Table */}
-        <Col lg={4}>
-          <Card className="card-custom h-100">
-            <Card.Header className="bg-warning text-dark">
+        <div className="col-lg-4">
+          <div className="card card-custom h-100">
+            <div className="card-header bg-warning text-dark">
               <FaBomb className="me-2" />
               الذخيرة ({operationAmmunition.length})
-            </Card.Header>
-            <Card.Body className="p-0">
+            </div>
+            <div className="card-body p-0">
               {operationAmmunition.length > 0 ? (
-                <Table hover className="mb-0">
+                <table className="table table-hover mb-0">
                   <thead className="table-light">
                     <tr>
                       <th>النوع</th>
@@ -99,34 +98,34 @@ const SubTables: React.FC = () => {
                       <tr key={ammo.id}>
                         <td className="fw-bold">{ammo.النوع}</td>
                         <td>
-                          <Badge bg="info">{ammo.الكمية}</Badge>
+                          <span className="badge bg-info">{ammo.الكمية}</span>
                         </td>
                         <td>{ammo.الوحدة}</td>
                         <td>{ammo.المصدر}</td>
                       </tr>
                     ))}
                   </tbody>
-                </Table>
+                </table>
               ) : (
                 <div className="text-center p-4 text-muted">
                   <FaBomb size={24} className="mb-2" />
                   <p>لا توجد بيانات ذخيرة</p>
                 </div>
               )}
-            </Card.Body>
-          </Card>
-        </Col>
+            </div>
+          </div>
+        </div>
 
         {/* Attachments Table */}
-        <Col lg={4}>
-          <Card className="card-custom h-100">
-            <Card.Header className="bg-success text-white">
+        <div className="col-lg-4">
+          <div className="card card-custom h-100">
+            <div className="card-header bg-success text-white">
               <FaPaperclip className="me-2" />
               المرفقات ({operationAttachments.length})
-            </Card.Header>
-            <Card.Body className="p-0">
+            </div>
+            <div className="card-body p-0">
               {operationAttachments.length > 0 ? (
-                <Table hover className="mb-0">
+                <table className="table table-hover mb-0">
                   <thead className="table-light">
                     <tr>
                       <th>الاسم</th>
@@ -140,24 +139,24 @@ const SubTables: React.FC = () => {
                       <tr key={attachment.id}>
                         <td className="fw-bold">{attachment.الاسم}</td>
                         <td>
-                          <Badge bg="dark">{attachment.النوع}</Badge>
+                          <span className="badge bg-dark">{attachment.النوع}</span>
                         </td>
                         <td>{attachment.الحجم}</td>
                         <td>{attachment.التاريخ}</td>
                       </tr>
                     ))}
                   </tbody>
-                </Table>
+                </table>
               ) : (
                 <div className="text-center p-4 text-muted">
                   <FaPaperclip size={24} className="mb-2" />
                   <p>لا توجد مرفقات</p>
                 </div>
               )}
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

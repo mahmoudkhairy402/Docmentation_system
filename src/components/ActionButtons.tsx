@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Button, ButtonGroup } from 'react-bootstrap';
 import { FaPlus, FaEdit, FaTrash, FaDownload } from 'react-icons/fa';
 
 const ActionButtons: React.FC = () => {
@@ -10,24 +9,24 @@ const ActionButtons: React.FC = () => {
         <FaPlus className="me-2 text-primary" />
         مهام العمليات الجوية
       </h4>
-      <ButtonGroup>
-        <Button variant="success" className="btn-custom">
+      <div className="btn-group">
+        <button className="btn btn-success btn-custom">
           <FaPlus className="me-1" />
           إضافة جديد
-        </Button>
-        <Button variant="primary" className="btn-custom">
+        </button>
+        <button className="btn btn-primary btn-custom">
           <FaEdit className="me-1" />
           تعديل
-        </Button>
-        <Button variant="danger" className="btn-custom">
+        </button>
+        <button className="btn btn-danger btn-custom">
           <FaTrash className="me-1" />
           حذف
-        </Button>
-        <Button variant="info" className="btn-custom">
+        </button>
+        <button className="btn btn-info btn-custom">
           <FaDownload className="me-1" />
           تصدير
-        </Button>
-      </ButtonGroup>
+        </button>
+      </div>
     </div>
   );
 };
