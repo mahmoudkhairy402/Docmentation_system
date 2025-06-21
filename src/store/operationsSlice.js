@@ -61,6 +61,10 @@ const initialState = {
   ],
   loading: false,
   error: null,
+  nextId: 4,
+  nextTeamId: 4,
+  nextAmmunitionId: 4,
+  nextAttachmentId: 4,
 };
 
 const operationsSlice = createSlice({
@@ -74,7 +78,8 @@ const operationsSlice = createSlice({
       state.loading = action.payload;
     },
     addOperation: (state, action) => {
-      state.operations.push(action.payload);
+      state.operations.push({ ...action.payload, id: state.nextId });
+      state.nextId += 1;
     },
     updateOperation: (state, action) => {
       const index = state.operations.findIndex(op => op.id === action.payload.id);
@@ -84,9 +89,55 @@ const operationsSlice = createSlice({
     },
     deleteOperation: (state, action) => {
       state.operations = state.operations.filter(op => op.id !== action.payload);
+      // Remove related team, ammunition, and attachments
+      state.team = state.team.filter(member => member.operationId !== action.payload);
+      state.ammunition = state.ammunition.filter(ammo => ammo.operationId !== action.payload);
+      state.attachments = state.attachments.filter(att => att.operationId !== action.payload);
       if (state.selectedOperation?.id === action.payload) {
         state.selectedOperation = null;
       }
+    },
+    // Team actions
+    addTeamMember: (state, action) => {
+      state.team.push({ ...action.payload, id: state.nextTeamId });
+      state.nextTeamId += 1;
+    },
+    updateTeamMember: (state, action) => {
+      const index = state.team.findIndex(member => member.id === action.payload.id);
+      if (index !== -1) {
+        state.team[index] = action.payload;
+      }
+    },
+    deleteTeamMember: (state, action) => {
+      state.team = state.team.filter(member => member.id !== action.payload);
+    },
+    // Ammunition actions
+    addAmmunition: (state, action) => {
+      state.ammunition.push({ ...action.payload, id: state.nextAmmunitionId });
+      state.nextAmmunitionId += 1;
+    },
+    updateAmmunition: (state, action) => {
+      const index = state.ammunition.findIndex(ammo => ammo.id === action.payload.id);
+      if (index !== -1) {
+        state.ammunition[index] = action.payload;
+      }
+    },
+    deleteAmmunition: (state, action) => {
+      state.ammunition = state.ammunition.filter(ammo => ammo.id !== action.payload);
+    },
+    // Attachment actions
+    addAttachment: (state, action) => {
+      state.attachments.push({ ...action.payload, id: state.nextAttachmentId });
+      state.nextAttachmentId += 1;
+    },
+    updateAttachment: (state, action) => {
+      const index = state.attachments.findIndex(att => att.id === action.payload.id);
+      if (index !== -1) {
+        state.attachments[index] = action.payload;
+      }
+    },
+    deleteAttachment: (state, action) => {
+      state.attachments = state.attachments.filter(att => att.id !== action.payload);
     },
   },
 });
@@ -96,7 +147,16 @@ export const {
   setLoading, 
   addOperation, 
   updateOperation, 
-  deleteOperation 
+  deleteOperation,
+  addTeamMember,
+  updateTeamMember,
+  deleteTeamMember,
+  addAmmunition,
+  updateAmmunition,
+  deleteAmmunition,
+  addAttachment,
+  updateAttachment,
+  deleteAttachment
 } = operationsSlice.actions;
 
 export default operationsSlice.reducer;
