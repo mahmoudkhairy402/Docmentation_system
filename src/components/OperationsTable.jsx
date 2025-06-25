@@ -1,11 +1,12 @@
-
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectOperation } from '../store/operationsSlice.js';
-import { FaPlane, FaMapMarkerAlt, FaFlag } from 'react-icons/fa';
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectOperation } from "../store/operationsSlice.js";
+import { FaPlane, FaMapMarkerAlt, FaFlag } from "react-icons/fa";
 
 const OperationsTable = () => {
-  const { operations, selectedOperation } = useSelector((state) => state.operations);
+  const { operations, selectedOperation } = useSelector(
+    (state) => state.operations
+  );
   const dispatch = useDispatch();
 
   const handleRowClick = (operation) => {
@@ -14,12 +15,12 @@ const OperationsTable = () => {
 
   const getStatusBadge = (status) => {
     const statusColors = {
-      'مكتملة': 'success',
-      'قيد التنفيذ': 'warning',
-      'مجدولة': 'info',
-      'ملغية': 'danger'
+      مكتملة: "success",
+      "قيد التنفيذ": "warning",
+      مجدولة: "info",
+      ملغية: "danger",
     };
-    return `badge bg-${statusColors[status] || 'secondary'}`;
+    return `badge bg-${statusColors[status] || "secondary"}`;
   };
 
   return (
@@ -27,11 +28,20 @@ const OperationsTable = () => {
       <table className="table table-hover table-responsive mb-0">
         <thead>
           <tr>
-            <th><FaFlag className="me-2" />نوع العملية</th>
+            <th>
+              <FaFlag className="me-2" />
+              نوع العملية
+            </th>
             <th>التاريخ</th>
-            <th><FaPlane className="me-2" />الطائرات</th>
+            <th>
+              <FaPlane className="me-2" />
+              الطائرات
+            </th>
             <th>عدد الطائرات</th>
-            <th><FaMapMarkerAlt className="me-2" />المركز</th>
+            <th>
+              <FaMapMarkerAlt className="me-2" />
+              المركز
+            </th>
             <th>التشكيل المنفذ</th>
             <th>من / إلى</th>
             <th>الهدف</th>
@@ -44,7 +54,9 @@ const OperationsTable = () => {
             <tr
               key={operation.id}
               className={`table-row-hover ${
-                selectedOperation?.id === operation.id ? 'table-row-selected' : ''
+                selectedOperation?.id === operation.id
+                  ? "table-row-selected"
+                  : ""
               }`}
               onClick={() => handleRowClick(operation)}
             >
@@ -61,11 +73,15 @@ const OperationsTable = () => {
               <td>{operation.من_إلى}</td>
               <td>{operation.الهدف}</td>
               <td>
-                <span className={`badge ${
-                  operation.الاتجاه_الاستراتيجي === 'هجومي' ? 'bg-danger' :
-                  operation.الاتجاه_الاستراتيجي === 'دفاعي' ? 'bg-success' :
-                  'bg-secondary'
-                }`}>
+                <span
+                  className={`badge ${
+                    operation.الاتجاه_الاستراتيجي === "هجومي"
+                      ? "bg-danger"
+                      : operation.الاتجاه_الاستراتيجي === "دفاعي"
+                      ? "bg-success"
+                      : "bg-secondary"
+                  }`}
+                >
                   {operation.الاتجاه_الاستراتيجي}
                 </span>
               </td>
