@@ -9,7 +9,7 @@ const Index = () => {
   return (
     <div className="min-vh-100" dir="rtl">
       <CustomNavbar />
-      <ThemeToggle />
+      {/* <ThemeToggle /> */}
 
       <div className="container-fluid py-4">
         <div className="row">
