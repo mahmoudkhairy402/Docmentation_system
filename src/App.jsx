@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Index from "./pages/Index.jsx";
+import Login from "./pages/Login.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Index />} />
+      <Route path="/login" element={<Login />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

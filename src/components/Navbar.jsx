@@ -1,5 +1,6 @@
 import React from "react";
-import { FaDatabase, FaEdit, FaChartBar, FaCog } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaDatabase, FaSignInAlt } from "react-icons/fa";
 
 const CustomNavbar = () => {
   return (
@@ -18,32 +19,16 @@ const CustomNavbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="basicNavbar">
-          {/* <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <a className="nav-link text-white" href="#">
-                <FaDatabase className="me-1" />
-                البيانات الأساسية
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link text-white" href="#">
-                <FaEdit className="me-1" />
-                تسجيل بيانات
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link text-white" href="#">
-                <FaChartBar className="me-1" />
-                التقارير
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link text-white" href="#">
-                <FaCog className="me-1" />
-                الإعدادات
-              </a>
-            </li>
-          </ul> */}
+          <div className="navbar-nav ms-auto">
+            <div className="d-flex align-items-center gap-3">
+              <Link to="/login" className="btn btn-outline-light btn-sm">
+                <FaSignInAlt className="me-1" />
+                تسجيل الدخول
+              </Link>
+              <span className="badge bg-success">متصل</span>
+              <span className="text-white fw-medium">أهلاً وسهلاً</span>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
