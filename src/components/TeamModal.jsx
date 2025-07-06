@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTeamMember, updateTeamMember } from '../store/operationsSlice.js';
+import { createTeamMember, updateTeamMember } from '../store/teamSlice.js';
 import { FaSave, FaTimes } from 'react-icons/fa';
 
 const TeamModal = ({ show, onHide, member = null, operationId }) => {
@@ -38,7 +38,7 @@ const TeamModal = ({ show, onHide, member = null, operationId }) => {
     if (member) {
       dispatch(updateTeamMember({ ...formData, id: member.id }));
     } else {
-      dispatch(addTeamMember(formData));
+      dispatch(createTeamMember(formData));
     }
     onHide();
   };

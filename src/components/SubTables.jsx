@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  deleteTeamMember,
-  deleteAmmunition,
-  deleteAttachment,
-} from "../store/operationsSlice.js";
+import { deleteTeamMember } from "../store/teamSlice.js";
+import { deleteAmmunition } from "../store/ammunitionSlice.js";
+import { deleteAttachment } from "../store/attachmentsSlice.js";
 import TeamModal from "./TeamModal.jsx";
 import AmmunitionModal from "./AmmunitionModal.jsx";
 import AttachmentModal from "./AttachmentModal.jsx";
@@ -18,8 +16,12 @@ import {
 } from "react-icons/fa";
 
 const SubTables = () => {
-  const { selectedOperation, team, ammunition, attachments, loading } =
-    useSelector((state) => state.operations);
+  const { selectedOperation } = useSelector((state) => state.operations);
+  const { members: team, loading: teamLoading } = useSelector((state) => state.team);
+  const { items: ammunition, loading: ammunitionLoading } = useSelector((state) => state.ammunition);
+  const { items: attachments, loading: attachmentsLoading } = useSelector((state) => state.attachments);
+  
+  const loading = teamLoading || ammunitionLoading || attachmentsLoading;
   const dispatch = useDispatch();
 
   const [showTeamModal, setShowTeamModal] = useState(false);

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addAttachment, updateAttachment } from '../store/operationsSlice.js';
+import { createAttachment, updateAttachment } from '../store/attachmentsSlice.js';
 import { FaSave, FaTimes } from 'react-icons/fa';
 
 const AttachmentModal = ({ show, onHide, attachment = null, operationId }) => {
@@ -38,7 +38,7 @@ const AttachmentModal = ({ show, onHide, attachment = null, operationId }) => {
     if (attachment) {
       dispatch(updateAttachment({ ...formData, id: attachment.id }));
     } else {
-      dispatch(addAttachment(formData));
+      dispatch(createAttachment(formData));
     }
     onHide();
   };

@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addAmmunition, updateAmmunition } from '../store/operationsSlice.js';
+import { createAmmunition, updateAmmunition } from '../store/ammunitionSlice.js';
 import { FaSave, FaTimes } from 'react-icons/fa';
 
 const AmmunitionModal = ({ show, onHide, ammunition = null, operationId }) => {
@@ -38,7 +38,7 @@ const AmmunitionModal = ({ show, onHide, ammunition = null, operationId }) => {
     if (ammunition) {
       dispatch(updateAmmunition({ ...formData, id: ammunition.id }));
     } else {
-      dispatch(addAmmunition(formData));
+      dispatch(createAmmunition(formData));
     }
     onHide();
   };
