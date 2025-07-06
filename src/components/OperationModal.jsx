@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addOperation, updateOperation } from '../store/operationsSlice.js';
+import { createOperation, updateOperation } from '../store/operationsSlice.js';
 import { FaSave, FaTimes } from 'react-icons/fa';
 
 const OperationModal = ({ show, onHide, operation = null }) => {
@@ -51,7 +51,7 @@ const OperationModal = ({ show, onHide, operation = null }) => {
     if (operation) {
       dispatch(updateOperation({ ...formData, id: operation.id }));
     } else {
-      dispatch(addOperation(formData));
+      dispatch(createOperation(formData));
     }
     onHide();
   };
