@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaEnvelope, FaLock, FaPlane, FaSignInAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +8,7 @@ const Login = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -14,14 +16,15 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
+    //! Handle login logic here
+    navigate("/");
     console.log("Login attempt:", formData);
   };
 
   return (
     <div className="login-container min-vh-100 d-flex align-items-center justify-content-center">
       <div className="login-bg-pattern"></div>
-      
+
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-md-5 col-lg-4">
@@ -40,7 +43,9 @@ const Login = () => {
               {/* Login Form */}
               <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                  <label className="form-label fw-medium">البريد الإلكتروني</label>
+                  <label className="form-label fw-medium">
+                    البريد الإلكتروني
+                  </label>
                   <div className="input-group login-input-group">
                     <span className="input-group-text login-input-icon">
                       <FaEnvelope />

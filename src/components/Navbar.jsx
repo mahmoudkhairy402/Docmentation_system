@@ -19,15 +19,13 @@ const CustomNavbar = () => {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="basicNavbar">
-          <div className="navbar-nav ms-auto">
-            <div className="d-flex align-items-center gap-3">
+          <div className="navbar-nav me-auto ">
+            {/* <div className="d-flex align-items-center gap-3">
               <Link to="/login" className="btn btn-outline-light btn-sm">
                 <FaSignInAlt className="me-1" />
                 تسجيل الدخول
               </Link>
-              <span className="badge bg-success">متصل</span>
-              <span className="text-white fw-medium">أهلاً وسهلاً</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
