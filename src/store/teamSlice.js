@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import Swal from 'sweetalert2';
 
 // Async thunks
 export const fetchTeamMembers = createAsyncThunk(
@@ -103,6 +104,12 @@ const teamSlice = createSlice({
       .addCase(createTeamMember.fulfilled, (state, action) => {
         state.loading = false;
         state.members.push(action.payload);
+        Swal.fire({
+          title: 'نجح!',
+          text: 'تم إضافة عضو الفريق بنجاح',
+          icon: 'success',
+          confirmButtonText: 'موافق'
+        });
       })
       .addCase(createTeamMember.rejected, (state, action) => {
         state.loading = false;
@@ -119,6 +126,12 @@ const teamSlice = createSlice({
         if (index !== -1) {
           state.members[index] = action.payload;
         }
+        Swal.fire({
+          title: 'نجح!',
+          text: 'تم تحديث عضو الفريق بنجاح',
+          icon: 'success',
+          confirmButtonText: 'موافق'
+        });
       })
       .addCase(updateTeamMember.rejected, (state, action) => {
         state.loading = false;
@@ -132,6 +145,12 @@ const teamSlice = createSlice({
       .addCase(deleteTeamMember.fulfilled, (state, action) => {
         state.loading = false;
         state.members = state.members.filter(member => member.id !== action.payload);
+        Swal.fire({
+          title: 'نجح!',
+          text: 'تم حذف عضو الفريق بنجاح',
+          icon: 'success',
+          confirmButtonText: 'موافق'
+        });
       })
       .addCase(deleteTeamMember.rejected, (state, action) => {
         state.loading = false;

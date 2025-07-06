@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import Swal from 'sweetalert2';
 
 // Async thunks
 export const fetchAttachments = createAsyncThunk(
@@ -103,6 +104,12 @@ const attachmentsSlice = createSlice({
       .addCase(createAttachment.fulfilled, (state, action) => {
         state.loading = false;
         state.items.push(action.payload);
+        Swal.fire({
+          title: 'نجح!',
+          text: 'تم إضافة المرفق بنجاح',
+          icon: 'success',
+          confirmButtonText: 'موافق'
+        });
       })
       .addCase(createAttachment.rejected, (state, action) => {
         state.loading = false;
@@ -119,6 +126,12 @@ const attachmentsSlice = createSlice({
         if (index !== -1) {
           state.items[index] = action.payload;
         }
+        Swal.fire({
+          title: 'نجح!',
+          text: 'تم تحديث المرفق بنجاح',
+          icon: 'success',
+          confirmButtonText: 'موافق'
+        });
       })
       .addCase(updateAttachment.rejected, (state, action) => {
         state.loading = false;
@@ -132,6 +145,12 @@ const attachmentsSlice = createSlice({
       .addCase(deleteAttachment.fulfilled, (state, action) => {
         state.loading = false;
         state.items = state.items.filter(item => item.id !== action.payload);
+        Swal.fire({
+          title: 'نجح!',
+          text: 'تم حذف المرفق بنجاح',
+          icon: 'success',
+          confirmButtonText: 'موافق'
+        });
       })
       .addCase(deleteAttachment.rejected, (state, action) => {
         state.loading = false;
