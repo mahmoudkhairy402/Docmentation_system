@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectOperation } from "../store/operationsSlice.js";
+import { selectOperation, fetchOperations } from "../store/operationsSlice.js";
 import { FaPlane, FaMapMarkerAlt, FaFlag } from "react-icons/fa";
 
 const OperationsTable = () => {
@@ -8,6 +8,10 @@ const OperationsTable = () => {
     (state) => state.operations
   );
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchOperations());
+  }, [dispatch]);
 
   const handleRowClick = (operation) => {
     dispatch(selectOperation(operation));
